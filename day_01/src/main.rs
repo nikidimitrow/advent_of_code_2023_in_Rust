@@ -3,7 +3,10 @@ use std::error::Error;
 
 fn main() -> Result<(), Box<dyn Error>> {
     // Open the input file
-    let input = fs::read_to_string("../input")?;
+    let input = match fs::read_to_string("../input"){
+        Ok(input) => input,
+        Err(err) => return Err(Box::new(err)),
+    };
 
     // Split the file into lines
     let lines: Vec<&str> = input.lines().collect();
@@ -38,6 +41,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Print the final sum and index
     println!("Sum: {}, Index {}", temp_sum, temp_index);
-     
+    // Final answer is 67450 calories
+
     Ok(())
 }

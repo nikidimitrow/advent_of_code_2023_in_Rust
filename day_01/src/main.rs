@@ -8,6 +8,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         Err(err) => return Err(Box::new(err)),
     };
 
+    let mut only_numbers = true;
+    for ch in input.chars() {
+        if !ch.is_numeric() {
+            only_numbers = false;
+            break;
+        }
+    }
+
     // Split the file into lines
     let lines: Vec<&str> = input.lines().collect();
 

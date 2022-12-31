@@ -8,6 +8,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         Err(err) => return Err(Box::new(err)),
     };
 
+    //Check if the input file contained only digit
     let mut only_numbers = true;
     for ch in input.chars() {
         if !ch.is_numeric() {
@@ -37,7 +38,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             // Otherwise, parse the number and add it to the sum
             let number: i32 = line.parse()?;
             sum += number;
-
+            //Collected the biggest sum at the current moment and the index
             if !line.is_empty() {
                 if temp_sum < sum {
                     temp_sum = sum;
